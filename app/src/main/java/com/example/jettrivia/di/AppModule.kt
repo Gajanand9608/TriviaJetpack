@@ -1,6 +1,7 @@
 package com.example.jettrivia.di
 
 import com.example.jettrivia.network.QuestionAPI
+import com.example.jettrivia.repository.QuestionRepository
 import com.example.jettrivia.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -13,6 +14,7 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
     @Singleton
     @Provides
     fun provideQuestionAPI(): QuestionAPI {
@@ -21,4 +23,9 @@ object AppModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(QuestionAPI::class.java)
     }
+
+    @Singleton
+    @Provides
+    fun provideQuestionRepository(questionAPI : QuestionAPI) = QuestionRepository(questionAPI)
+
 }

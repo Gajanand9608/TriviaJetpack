@@ -6,6 +6,6 @@ import javax.inject.Singleton
 
 @Singleton
 interface QuestionAPI {
-    @GET("worlds.json")
+    @GET("world.json")
     suspend fun getAllQuestions() : Question
 }
