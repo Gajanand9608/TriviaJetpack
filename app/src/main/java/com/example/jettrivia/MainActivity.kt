@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.jettrivia.ui.screens.TriviaHome
 import com.example.jettrivia.ui.theme.JetTriviaTheme
 import com.example.jettrivia.viewmodels.QuestionsViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,20 +37,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
- @Composable
- fun TriviaHome(viewModel : QuestionsViewModel = hiltViewModel()){
-     Questions(viewModel)
- }
-
- @Composable
- fun Questions(viewModel: QuestionsViewModel) {
-     val questions = viewModel.data.value.data?.toMutableList()
-     if(viewModel.data.value.loading==true){
-         CircularProgressIndicator()
-     }else{
-       Log.d("TAG", "Questions: ${questions?.size}")
-     }
- }
 
  @Preview(showBackground = true)
 @Composable
